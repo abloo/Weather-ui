@@ -1,0 +1,18 @@
+/* WeatherApp.css */
+
+.weather-app {
+  text-align: center;
+  margin: 20px;
+}
+
+.weather-app .input-field {
+  margin: 10px 0;
+}
+
+.weather-app .error-message {
+  color: red;
+}
+
+.weather-app .city-title {
+  margin: 20px 0;
+}
