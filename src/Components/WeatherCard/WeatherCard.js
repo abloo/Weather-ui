@@ -3,7 +3,7 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud, faSun, faUmbrella, faWind, faCloudRain, faBolt } from '@fortawesome/free-solid-svg-icons';
+import { faCloud, faSun, faWind, faCloudRain, faBolt } from '@fortawesome/free-solid-svg-icons';
 import './WeatherCard.css';
 
 const WeatherCard = ({ item }) => {

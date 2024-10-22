@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import WeatherApp from './Components/WeatherApp';
 import AppBarComponent from './Components/Header/AppBarHeader';
