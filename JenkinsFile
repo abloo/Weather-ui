@@ -1,0 +1,78 @@
+pipeline {
+    agent any
+    tools {
+    nodejs 'NodeJS' // Name of the Node.js installation configured in Jenkins
+    }
+
+    environment {
+        DOCKER_IMAGE = "weather-ui"   /* Name of the Docker image */
+        REGISTRY_URL = "manvendra183" /* Docker registry */
+        REGISTRY_CREDENTIALS = "docker-credentials-id" /* Docker credentials */
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'master', credentialsId: 'git-credentials-id', url: 'https://github.com/abloo/Weather.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Build React App') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t $DOCKER_IMAGE .'
+                }
+            }
+        }
+
+        stage('Push Docker Image to Registry') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIALS, passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        sh "docker login -u $USERNAME -p $PASSWORD"
+                    }
+                    sh "docker tag $DOCKER_IMAGE $REGISTRY_URL/$DOCKER_IMAGE:latest"
+                    sh "docker push $REGISTRY_URL/$DOCKER_IMAGE:latest"
+                }
+            }
+        }
+
+        stage('Deploy to Server') {
+            steps {
+                script {
+                    // Stop and remove any existing container with the name 'weather-app'
+                    sh 'docker ps -q --filter "name=weather-app" | grep -q . && docker stop weather-app && docker rm weather-app || echo "No container to stop"'
+
+                    // Run the new container
+                    sh 'docker run -d -p 80:80 --name weather-app $REGISTRY_URL/$DOCKER_IMAGE:latest'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean workspace after the build
+            cleanWs()
+        }
+    }
+}
