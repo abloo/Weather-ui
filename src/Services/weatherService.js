@@ -1,10 +1,10 @@
-const BASE_URL = 'http://localhost:8080/api/weather';
+const BASE_URL = 'http://localhost:8080/api/v1';
 
 
 const getWeatherData = async (city, isOfflineMode) => {
   try {
       if (!isOfflineMode) {
-          const response = await fetch(`${BASE_URL}`);
+          const response = await fetch(`${BASE_URL}/${city}`);
           if (!response.ok) throw new Error('Network response was not ok');
           const data = await response.json();
 

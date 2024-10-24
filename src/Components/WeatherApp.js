@@ -7,7 +7,7 @@ import OfflineToggle from './OfflineToogle/OfflineToogle';
 
 const WeatherApp = () => {
     const [city, setCity] = useState('');
-    const [weatherData, setWeatherData] = useState(null);
+    const [weatherData, setWeatherData] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [isOfflineMode, setIsOfflineMode] = useState(false);
@@ -29,11 +29,12 @@ const WeatherApp = () => {
         if (!validateInput()) return;
 
         setLoading(true);
-        setWeatherData(null); // Clear previous data
+        setWeatherData([]); // Clear previous data
 
         try {
             const data = await getWeatherData(city, isOfflineMode);
-            setWeatherData(data);
+            setWeatherData(data); // Expecting data to be an array
+            console.log(data);
         } catch (err) {
             setError('Error fetching weather data. Please try again.');
         } finally {
@@ -51,9 +52,9 @@ const WeatherApp = () => {
                         label="City Name"
                         value={city}
                         onChange={(e) => {
-                          setCity(e.target.value.toUpperCase()); // Set the value in uppercase
-                          if (error) setError(''); // Clear error on input change
-                      }}
+                            setCity(e.target.value.toUpperCase()); // Set the value in uppercase
+                            if (error) setError(''); // Clear error on input change
+                        }}
                         variant="outlined"
                         margin="normal"
                         error={!!error}
@@ -66,13 +67,13 @@ const WeatherApp = () => {
                     </Button>
                 </Grid>
             </Grid>
-            {weatherData && weatherData.list && (
+            {weatherData.length > 0 && (
                 <div>
-                    <Typography variant="h5" className="city-title">{`Weather in ${weatherData.city.name}`}</Typography>
+                    <Typography variant="h5" className="city-title">{`Weather in ${city}`}</Typography>
                     <Grid container spacing={2}>
-                        {weatherData.list.map((item) => (
-                            <Grid item xs={12} sm={6} md={4} key={item.dt}>
-                                <WeatherCard item={item} />
+                        {weatherData.map((item, index) => (
+                            <Grid item xs={12} sm={6} md={4} key={index}>
+                                <WeatherCard data={item} />
                             </Grid>
                         ))}
                     </Grid>
