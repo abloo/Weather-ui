@@ -64,11 +64,12 @@ pipeline {
                         FOR /F "tokens=*" %%i IN ('docker ps -q --filter "name=weather-app"') DO (
                             docker stop %%i
                             docker rm %%i
-                        ) || echo "No container to stop"
+                        )
+                        IF ERRORLEVEL 1 echo "No container to stop"
                     '''
 
                     // Run the new container
-                    bat 'docker run -d -p 3000:3000 --name weather-app %REGISTRY_URL%/%DOCKER_IMAGE%:latest'
+                    bat 'docker run -d -p 3000:80 --name weather-app %REGISTRY_URL%/%DOCKER_IMAGE%:latest'
                 }
             }
         }
