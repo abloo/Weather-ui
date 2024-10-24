@@ -14,7 +14,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git branch: 'master', credentialsId: 'git-credentials-id', url: 'https://github.com/abloo/Weather.git'
+                git branch: 'master', credentialsId: 'git-credentials-id', url: 'https://github.com/abloo/Weather-ui.git'
             }
         }
 
@@ -68,7 +68,7 @@ pipeline {
                     '''
 
                     // Run the new container
-                    bat 'docker run -d -p 80:80 --name weather-app %REGISTRY_URL%/%DOCKER_IMAGE%:latest'
+                    bat 'docker run -d -p 3000:3000 --name weather-app %REGISTRY_URL%/%DOCKER_IMAGE%:latest'
                 }
             }
         }
