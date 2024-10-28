@@ -29,8 +29,8 @@ A comprehensive Weather Application built with Spring Boot and React that fetche
 ## Table of Contents
 - [Overview](#overview)
 - [Architecture](#architecture)
-- [Pipeline](#features)
-- [Deployment](#deployment)
+- [Pipeline](#pipeline)
+- [Output](#output)
 
 ## Overview
 This Weather Application provides users with real-time weather data and custom alerts based on weather conditions. The application includes:
@@ -70,7 +70,7 @@ Below is a simplified architecture diagram for the Weather Application:
                                   | Retry Mechanisms)   |
                                   +----------------------+
 
-### Deployment
+### Pipeline
 
 
 **Jenkins Dashboard**
