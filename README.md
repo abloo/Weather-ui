@@ -1,4 +1,3 @@
-
 # manvendra-carft-review-case-study
 
 
@@ -45,61 +44,58 @@ The application is based on a microservices architecture, where the backend and 
 
 Below is a simplified architecture diagram for the Weather Application:
 
-```plaintext
                                   +-----------------------+
                                   |    User Interface     |
-                                  | (React Application)   |
+                                  |   (React Application) |
                                   +----------+------------+
                                              |
                                              |
                                  +-----------v-------------+
                                  |       Frontend          |
-                                 | (React, Material UI,    |
-                                 |  Bootstrap, FontAwesome)|
+                                 |(React, Material UI,     |
+                                 | Bootstrap, FontAwesome) |
                                  +-----------+-------------+
                                              |
                                              |
                            +-----------------v-----------------+
                            |           Backend API            |
-                           |     (Spring Boot Microservice)    |
-                           |          Java, Lombok            |
+                           |     (Spring Boot Microservice)   |
+                           |       (Java, Lombok, S3)         |
                            +-----------------+-----------------+
                                              |
                                              |
                                   +----------v----------+
-                                  |      Resilience4j    |
-                                  | (Circuit Breaker,    |
-                                  | Retry Mechanisms)    |
-                                  +----------+-----------+
+                                  |     Resilience4j    |
+                                  |(Circuit Breaker and |
+                                  | Retry Mechanisms)   |
+                                  +----------------------+
 
-## Deployment
+### Deployment
 
- **Jenkins Dashboard**
- 
-![Alt text](<Screenshot JenkinsDashboard.png>)
 
- **Jenkins Pipeline UI**
+**Jenkins Dashboard**
+![Jenkins Dashboard](./ScreenshotJenkinsDashboard.png)
 
-![Alt text](<Screenshot Pipeline.png>)
+**Jenkins Pipeline UI**
+![Jenkins Pipeline UI](./Screenshot%20Pipeline.png)
 
- **Jenkins Pipeline BE**
+**Jenkins Pipeline BE**
+![Jenkins Pipeline BE](./Screenshot%20Pipeline2.png)
 
-![Alt text](<Screenshot Pipeline2.png>)
+**Docker Dashboard**
+![Docker Dashboard](./Screenshot%20Docker.png)
 
- **Docker Dashboard**
+## Output
 
-![Alt text](<Screenshot Docker.png>)
+**Weather Dashboard**
+![Weather Dashboard](./Screenshot%20Data.png)
 
-## Output 
+**Weather Error**
+![Weather Error](./Screenshot%20Error.png)
 
- **Weather Dashboard**
+## Sequence Diagram
+![Sequence Diagram](./flowchartweather.drawio.png)
 
-![Alt text](<Screenshot Data.png>)
+## Lighthouse Report
+![Sequence Diagram](./ScreenshotLightHouse.png)
 
- **Weather Error**
-
-![Alt text](<Screenshot Error.png>)
-
-## Sequence Diagram 
-
-![Alt text](<flowchartweather.drawio.png>)
