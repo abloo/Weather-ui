@@ -1,70 +1,105 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# manvendra-carft-review-case-study
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Getting started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-### `npm test`
+## Add your files
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
+- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-### `npm run build`
+```
+cd existing_repo
+git remote add origin https://pscode.lioncloud.net/rohdubey2/manvendra-carft-review-case-study.git
+git branch -M main
+git push -uf origin main
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+***
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Weather Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A comprehensive Weather Application built with Spring Boot and React that fetches real-time weather data, processes conditions like high winds and thunderstorms, and presents users with a responsive interface. This application utilizes AWS services for file storage and Kubernetes for deployment orchestration, ensuring a scalable and reliable production environment.
 
-### `npm run eject`
+## Table of Contents
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Pipeline](#features)
+- [Deployment](#deployment)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Overview
+This Weather Application provides users with real-time weather data and custom alerts based on weather conditions. The application includes:
+- A backend API developed with Spring Boot that processes weather data.
+- A React frontend for user interaction, powered by Material UI and Bootstrap for a responsive design.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Architecture
+The application is based on a microservices architecture, where the backend and frontend are independent components. The backend retrieves and processes weather data, while the frontend interacts with the API to display weather information in real-time.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Architecture Diagram
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Below is a simplified architecture diagram for the Weather Application:
 
-## Learn More
+```plaintext
+                                  +-----------------------+
+                                  |    User Interface     |
+                                  | (React Application)   |
+                                  +----------+------------+
+                                             |
+                                             |
+                                 +-----------v-------------+
+                                 |       Frontend          |
+                                 | (React, Material UI,    |
+                                 |  Bootstrap, FontAwesome)|
+                                 +-----------+-------------+
+                                             |
+                                             |
+                           +-----------------v-----------------+
+                           |           Backend API            |
+                           |     (Spring Boot Microservice)    |
+                           |          Java, Lombok            |
+                           +-----------------+-----------------+
+                                             |
+                                             |
+                                  +----------v----------+
+                                  |      Resilience4j    |
+                                  | (Circuit Breaker,    |
+                                  | Retry Mechanisms)    |
+                                  +----------+-----------+
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ **Jenkins Dashboard**
+ 
+![Alt text](<Screenshot JenkinsDashboard.png>)
 
-### Code Splitting
+ **Jenkins Pipeline UI**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Alt text](<Screenshot Pipeline.png>)
 
-### Analyzing the Bundle Size
+ **Jenkins Pipeline BE**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Alt text](<Screenshot Pipeline2.png>)
 
-### Making a Progressive Web App
+ **Docker Dashboard**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Alt text](<Screenshot Docker.png>)
 
-### Advanced Configuration
+## Output 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+ **Weather Dashboard**
 
-### Deployment
+![Alt text](<Screenshot Data.png>)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ **Weather Error**
 
-### `npm run build` fails to minify
+![Alt text](<Screenshot Error.png>)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Sequence Diagram 
+
+![Alt text](<flowchartweather.drawio.png>)
